@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/product/home"></a>
+<form th:action="@{/product/create}" method="post"
+      enctype="multipart/form-data" th:object="${productForm}">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        Name :
+        <input type="text" placeholder="Enter product name" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </div>
+    <div>
+        Description :
+        <input type="text" placeholder="Enter product name" th:field="*{description}">
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    </div>
+    <div>
+        Price :
+        <input type="text" placeholder="Enter product name" th:field="*{price}">
+        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+    </div>
+    <div>
+        Category :
+        <select th:field="*{category}">
+            <th:block th:each="c : ${categories}">
+                <option th:value="${c.id}" th:text="${c.name}"></option>
+            </th:block>
+        </select>
+    </div>
+    <div>
+        Image :
+        <input type="file" placeholder="Enter product name" th:field="*{image}">
+        <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+    </div>
+    <button>Save</button>
+</form>
+</body>
+</html>
