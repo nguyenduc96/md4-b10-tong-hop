@@ -6,5 +6,36 @@
 </head>
 <body>
 <a href="/product/create">Create</a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Category</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="product, pStat : ${products}">
+        <td th:text="${pStat.count}"></td>
+        <td th:text="${product.name}">
+         <a th:href="@{{id}/view(id=${student.id})}" th:text="${product.name}" th:alt="View info">
+         </a>
+        </td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td>
+            <img width="60" height="60" th:src="@{'/image/' + ${product.image}}" alt="Image">
+        </td>
+        <td th:text="${product.category?.name}"></td>
+        <td><a th:href="@{{id}/edit(id=${student.id})}">EDIT</a></td>
+        <td><a th:href="@{{id}/delete(id=${student.id})}">DELETE</a></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
