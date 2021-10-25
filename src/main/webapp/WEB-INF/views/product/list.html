@@ -32,8 +32,8 @@
             <img width="60" height="60" th:src="@{'/image/' + ${product.image}}" alt="Image">
         </td>
         <td th:text="${product.category?.name}"></td>
-        <td><a th:href="@{{id}/edit(id=${student.id})}">EDIT</a></td>
-        <td><a th:href="@{{id}/delete(id=${student.id})}">DELETE</a></td>
+        <td><a th:href="@{{id}/edit(id=${product.id})}">EDIT</a></td>
+        <td><a th:href="@{{id}/delete(id=${product.id})}">DELETE</a></td>
     </tr>
     </tbody>
 </table>

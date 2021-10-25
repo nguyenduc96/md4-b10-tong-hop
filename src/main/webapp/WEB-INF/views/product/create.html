@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/product/home"></a>
+<a href="/product/home">Home</a>
 <form th:action="@{/product/create}" method="post"
       enctype="multipart/form-data" th:object="${productForm}">
     <input type="hidden" th:field="*{id}">
@@ -37,6 +37,7 @@
         <input type="file" placeholder="Enter product name" th:field="*{image}">
         <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
     </div>
+    <div th:text="${message}"></div>
     <button>Save</button>
 </form>
 </body>

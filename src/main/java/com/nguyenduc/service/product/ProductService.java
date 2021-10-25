@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService implements IProductService {
     @Autowired
@@ -40,5 +42,10 @@ public class ProductService implements IProductService {
     @Override
     public Page<Product> findAllByCategoryContaining(Long categoryId, Pageable pageable) {
         return productRepository.findAllByCategoryContaining(categoryId, pageable);
+    }
+
+    @Override
+    public Optional<Product> findOne(Long id) {
+        return productRepository.findById(id);
     }
 }
